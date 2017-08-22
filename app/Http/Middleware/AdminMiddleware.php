@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use function Psy\sh;
 
 /**
  * Class AdminMiddleware
@@ -12,7 +13,7 @@ use Closure;
 class AdminMiddleware
 {
     private const ADMIN_USERNAME = 'admin';
-    private const PASSWORD_HASH = '7c4a8d09ca3762af61e59520943dc26494f8941b';
+    private const PASSWORD = '123456';
     private $request;
 
 
@@ -39,6 +40,6 @@ class AdminMiddleware
 
     private function passwordValid(): bool
     {
-        return sha1($this->request->header('X-Password')) == self::PASSWORD_HASH;
+        return $this->request->header('X-Password') === sha1(self::PASSWORD);
     }
 }
