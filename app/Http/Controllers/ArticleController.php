@@ -10,7 +10,7 @@ class ArticleController extends Controller
 {
     public function showAll()
     {
-        $articles = Article::limit(5)->get();
+        $articles = Article::limit(5)->orderBy('id', 'desc')->get();
 
         return view('articles', ['articles' => $articles]);
     }
