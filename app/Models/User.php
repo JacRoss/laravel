@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $created_at
  * @property string $updated_at
  * @property Article[] $articles
+ * @property UserRole[] $userRoles
  */
 class User extends Model
 {
@@ -26,6 +27,14 @@ class User extends Model
      */
     public function articles()
     {
-        return $this->hasMany(Article::class);
+        return $this->hasMany('App\Models\Article');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function userRoles()
+    {
+        return $this->hasMany('App\Models\UserRole');
     }
 }
